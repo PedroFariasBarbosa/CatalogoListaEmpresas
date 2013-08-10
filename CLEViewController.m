@@ -65,6 +65,20 @@
     return cell;
 }
 
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    CLEEmpresa *empresa = [listaEmpresas objectAtIndex:indexPath.row];
+    
+    NSString *msg = [NSString stringWithFormat:@"Empresa: %@\nQuantidade de Empregados: %@",empresa.nome,empresa.quantidadeFuncionarios];
+    
+    UIAlertView *alert = [[[UIAlertView alloc]initWithTitle:@"Empresa" message:msg delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil]autorelease];
+    
+    [alert show];
+    
+    [self.tabelaEmpresas deselectRowAtIndexPath:indexPath animated:YES];
+    
+}
+
 - (void)dealloc {
     [_tabelaEmpresas release];
     [super dealloc];
