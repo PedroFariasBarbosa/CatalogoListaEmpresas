@@ -14,5 +14,7 @@
 }
 
 @property (retain, nonatomic) IBOutlet UITableView *tabelaEmpresas;
+@property (retain, nonatomic) IBOutlet UIBarButtonItem *btnEditar;
+- (IBAction)btnEditar:(id)sender;
 
 @end

@@ -81,6 +81,38 @@
 
 - (void)dealloc {
     [_tabelaEmpresas release];
+    [_btnEditar release];
     [super dealloc];
 }
+
+-(void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    [listaEmpresas removeObjectAtIndex:indexPath.row];
+    [self.tabelaEmpresas reloadData];
+}
+
+-(NSString*)tableView:(UITableView *)tableView titleForDeleteConfirmationButtonForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return @"Remover";
+}
+
+- (IBAction)btnEditar:(id)sender {
+    
+    if([self.btnEditar.title isEqualToString:@"Editar"])
+    {
+        [self.tabelaEmpresas setEditing:YES animated:YES];
+        self.btnEditar.title = @"Pronto";
+    }
+    else
+    {
+        [self.tabelaEmpresas setEditing:NO animated:YES];
+        self.btnEditar.title = @"Editar";
+    }
+}
+
+-(UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return UITableViewCellEditingStyleDelete;
+}
+
 @end
